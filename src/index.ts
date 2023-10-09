@@ -1,11 +1,4 @@
-import { TCPConnection } from "./behavioral/state/TCPConnection";
+import { MyApplication } from "./creational/factory-method";
 
-const conn = new TCPConnection();
-
-conn.acknowledge();
-
-conn.close();
-
-conn.close();
-
-conn.open();
+const app = new MyApplication();
+app.newDocument();
