@@ -1,4 +1,6 @@
-import { MyApplication } from "./creational/factory-method";
+import { Singleton } from "./creational/singleton";
 
-const app = new MyApplication();
-app.newDocument();
+const singleton = Singleton.instance();
+const singleton2 = Singleton.instance();
+
+console.log(singleton2.getInstancesQuantity());
