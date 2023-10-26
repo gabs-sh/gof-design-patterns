@@ -1,6 +1,17 @@
-import { Singleton } from "./creational/singleton";
+import {
+  Composition,
+  SimpleCompositor,
+  TexCompositor,
+} from "./behavioral/strategy";
 
-const singleton = Singleton.instance();
-const singleton2 = Singleton.instance();
+const simpleCompositor = new SimpleCompositor();
 
-console.log(singleton2.getInstancesQuantity());
+const composition = new Composition(simpleCompositor);
+
+composition.Repair();
+
+// const texCompositor = new TexCompositor();
+
+// composition.setCompositor(texCompositor);
+
+// composition.Repair();
