@@ -1,17 +1,19 @@
-import {
-  Composition,
-  SimpleCompositor,
-  TexCompositor,
-} from "./behavioral/strategy";
+import { Editor, LineShape, TextShape, TextView } from "./structural/adapter";
 
-const simpleCompositor = new SimpleCompositor();
+const editor = new Editor();
 
-const composition = new Composition(simpleCompositor);
+const lineShape = new LineShape();
 
-composition.Repair();
+const textView = new TextView();
 
-// const texCompositor = new TexCompositor();
+const textShape = new TextShape(textView);
 
-// composition.setCompositor(texCompositor);
+// editor.shape = lineShape;
 
-// composition.Repair();
+// editor.shape.BoundingBox();
+
+editor.shape = textShape;
+
+editor.shape.BoundingBox();
+
+editor.shape.CreateManipulator().Drag();
