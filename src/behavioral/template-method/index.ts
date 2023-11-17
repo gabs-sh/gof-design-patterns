@@ -13,6 +13,7 @@ abstract class AbstractTemplateMethodClass {
   abstract specificMethod(): void;
 
   // executa na ordem que é comum a duas ou mais classes
+  // pode ser sobrescrito e ser chamado através de super.exec()
   public exec() {
     this.commonMethod1();
     this.specificMethod();
@@ -29,6 +30,11 @@ export class ConcreteTemplateMethod1 extends AbstractTemplateMethodClass {
 export class ConcreteTemplateMethod2 extends AbstractTemplateMethodClass {
   specificMethod(): void {
     console.log("specific method 2");
+  }
+
+  exec() {
+    super.exec();
+    console.log("adição ao exec");
   }
 }
 
