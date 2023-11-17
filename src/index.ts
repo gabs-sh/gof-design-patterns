@@ -1,19 +1,28 @@
-import { Editor, LineShape, TextShape, TextView } from "./structural/adapter";
+import {
+  Handler,
+  Handler1,
+  Handler2,
+  Handler3,
+} from "./behavioral/chain-of-responsability";
 
-const editor = new Editor();
+function exec(handler: Handler) {
+  const strings = ["string2", "string3", "string1"];
 
-const lineShape = new LineShape();
+  for (const data of strings) {
+    const result = handler.handle(data);
+    if (result) {
+      console.log(`consegui processar: ${result}`);
+    } else {
+      console.log(`nenhum handler conseguiu processar o dado: ${data}`);
+    }
+  }
+}
 
-const textView = new TextView();
+const handler1 = new Handler1();
+const handler2 = new Handler2();
+const handler3 = new Handler3();
 
-const textShape = new TextShape(textView);
+// criando a cadeia
+handler1.setNext(handler2).setNext(handler3);
 
-// editor.shape = lineShape;
-
-// editor.shape.BoundingBox();
-
-editor.shape = textShape;
-
-editor.shape.BoundingBox();
-
-editor.shape.CreateManipulator().Drag();
+exec(handler1);
