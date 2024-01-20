@@ -1,3 +1,11 @@
-import { clientCode } from "./behavioral/template-method";
+import {
+  BorderDecorator,
+  TextView,
+  VisualComponent,
+} from "./structural/decorator";
 
-clientCode();
+const border = new BorderDecorator();
+border.setComponent(new TextView());
+
+const component: VisualComponent = border;
+component.draw();
